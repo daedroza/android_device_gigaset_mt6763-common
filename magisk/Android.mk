@@ -77,6 +77,7 @@ LOCAL_POST_INSTALL_CMD := \
   $(MY_MAGISK_TARGET_PATCH) ../../../boot.img && \
   $(BOOT_SIGNER) /boot $(MY_MAGISK_SOURCE_IMAGE) $(MY_MAGISK_SIGNING_KEY).pk8 $(MY_MAGISK_SIGNING_KEY).x509.pem $(MY_MAGISK_SOURCE_IMAGE) && \
   $(AVBTOOL) add_hash_footer --image $(MY_MAGISK_SOURCE_IMAGE) --partition_size $(BOARD_BOOTIMAGE_PARTITION_SIZE) --partition_name boot $(MY_MAGISK_SIGNING_ARGS) && \
+  $(AVBTOOL) append_vbmeta_image --image $(MY_MAGISK_SOURCE_IMAGE) --partition_size $(BOARD_BOOTIMAGE_PARTITION_SIZE) --vbmeta_image $(BOARD_PREBUILT_VBMETAIMAGE) && \
   mv -f $(MY_MAGISK_SOURCE_IMAGE) $(MY_MAGISK_TARGET_IMAGE)
 
 include $(BUILD_PREBUILT)
